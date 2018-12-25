@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<title>我的导航</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<header></header>
+	<main>
+		<div class="wrapper" id="X"></div>
+	</main>
+	<footer></footer>
+	<script>
+		keys = {
+			0: ['q','w','e','r','t','y','u','i','o','p'],
+			1: ['a','s','d','f','g','h','j','k','l'],
+			2: ['z','x','c','v','b','n','m'],
+			length: 3
+		}
+		hash = {
+			q: 'http://qq.com',
+			w: 'http://weibo.com',
+			e: 'http://ele.me',
+			r: 'http://renren.com',
+			t: 'http://tianya.com',
+			y: 'http://youtube.com',
+			u: 'http://uc.com',
+			i: 'http://iqiyi.com',
+			o: 'http://opera.com',
+			'p': undefined,
+			a: 'http://acfun.tv',
+			s: 'http://sohu.com',
+			z: 'http://zhihu.com',
+			m: 'http://www.mcdonalds.com.cn'
+		}
+
+		hashInLocalStorage = JSON.parse(localStorage.getItem('newHash') || 'null')
+		if(hashInLocalStorage){
+			hash = hashInLocalStorage
+		}
+		index = 0
+		while(index < keys['length']){
+			div = document.createElement('div')
+			X.appendChild(div)
+			row = keys[index]
+			index2 = 0
+			while(index2 < row.length){
+				kbd = document.createElement('kbd')
+				kbd.textContent = row[index2]
+				button = document.createElement('button')
+				button.id = row[index2]
+				button.textContent = '编辑'
+				button.onclick = function(abc){
+					key = abc.target.id
+					x = prompt('给我一个网址')
+					hash[key] = x
+					localStorage.setItem('newHash', JSON.stringify(hash))
+					console.log(hash)
+				}
+				kbd.appendChild(button)
+				div.appendChild(kbd)
+				index2 = index2 + 1
+			}
+			index = index + 1
+		}
+		document.onkeypress = function(xyz){
+			key = xyz['key']
+			website = hash[key]
+			// location.href = website
+			window.open(website, '_blank')
+		}
+	</script>
+</body>
+</html>
