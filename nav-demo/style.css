@@ -28,11 +28,53 @@ kbd:hover > button {
 	vertical-align: top;
 }
 #X > div:nth-child(2) {
-	margin-left: 1em;
+	margin-left: -1em;
 }
 #X > div:nth-child(3) {
-	margin-left: 2em;
+	margin-left: -5em;
 }
 main {
 	text-align: center;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.key {
+	width: 50px;
+	height: 40px;
+	background: linear-gradient(to bottom, #292929 0%,#111111 100%);
+	border: 1px solid #373737;
+	color: #c5c5c5;
+	border-radius: 6px;
+	box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 2px 0 2px #080808;
+	font-family: Helvetical;
+	font-size: 14px;
+	position: relative;
+}
+.row {
+	margin: 16px;
+}
+.row .key {
+	margin: 0 10px;
+}
+body {
+	background: grey url(./1.jpg) center center no-repeat;
+	background-size: cover;
+}
+.wrapper {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+}
+.key img {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: 4px;
+	bottom: 1px;
+}
+.key .text {
+	position: absolute;
+	top: 1px;
+	left: 4px;
 }
