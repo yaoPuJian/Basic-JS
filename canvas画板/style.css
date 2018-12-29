@@ -10,6 +10,13 @@ body {
 	position: relative;
 	/*overflow: hidden;*/
 }
+#canvas {
+	display: block;
+	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
 .actions {
 	position: fixed;
 	top: 0;
