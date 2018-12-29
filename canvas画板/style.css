@@ -8,7 +8,7 @@ ol {
 }
 body {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 .actions {
 	position: fixed;
