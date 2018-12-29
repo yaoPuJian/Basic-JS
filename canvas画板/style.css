@@ -2,23 +2,78 @@
 	margin: 0;
 	padding: 0;
 }
-#canvas {
-	background: green;
+ul,
+ol {
+	list-style: none;
 }
 body {
 	position: relative;
+	overflow: hidden;
 }
 .actions {
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	left: 0;
 }
-.actions > #brush {
-	display: none;
+.actions svg {
+	width: 1.5em;
+	height: 1.5em;
+	padding: 10px;
+	transition: all 0.3s;
+	margin: 0 10px;
 }
-.actions.x > #brush {
-	display: inline-block;
+.actions svg.active {
+	fill: red;
+	transform: scale(1.2);
 }
-.actions.x > #eraser {
-	display: none;
+.colors {
+	position: fixed;
+	top: 40px;
+	left: 20px;
+}
+.colors > li {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin: 10px 0;
+	transition: all 0.3s;
+}
+.colors > li.black {
+	background-color: black;
+}
+.colors > li.red {
+	background-color: red;
+}
+.colors > li.yellow {
+	background-color: yellow;
+}
+.colors > li.blue {
+	background-color: blue;
+}
+.colors > li.active {
+	transform: scale(1.2);
+	border: 1px solid #ccc;
+}
+.sizes {
+	position: fixed;
+	top: 40px;
+	right: 20px;
+}
+.sizes > li {
+	margin-top: 20px;
+}
+.sizes > .thin {
+	height: 0;
+	width: 40px;
+	border-top: 2px solid black;
+}
+.sizes > .middle {
+	height: 0;
+	width: 40px;
+	border-top: 4px solid black;
+}
+.sizes > .thick {
+	height: 0;
+	width: 40px;
+	border-top: 6px solid black;
 }

@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+var lineWidth = 2
 
 autoCanvasSize(canvas);
 
@@ -9,22 +10,76 @@ autoCanvasSize(canvas);
 listenToUser(canvas);
 
 /******/
-var eraserEnabled = false;
-eraser.onclick = function () {
-	eraserEnabled = true;
-	actions.className = "actions x";
+download.onclick = function() {
+	var url = canvas.toDataURL("image/png");
+	var a = document.createElement('a');
+	document.body.appendChild(a);
+	a.href = url;
+	a.download = '我的画';
+	a.target = "_blank";
+	a.click();
+
 }
-brush.onclick = function() {
+
+clear.onclick = function() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+thin.onclick = function() {
+	lineWidth = 2
+}
+middle.onclick = function() {
+	lineWidth = 4
+}
+thick.onclick = function() {
+	lineWidth = 6
+}
+black.onclick = function() {
+	context.strokeStyle = 'black';
+	black.classList.add('active');
+	yellow.classList.remove('active');
+	blue.classList.remove('active');
+	red.classList.remove('active');
+}
+red.onclick = function() {
+	context.strokeStyle = 'red';
+	red.classList.add('active');
+	yellow.classList.remove('active');
+	blue.classList.remove('active');
+	black.classList.remove('active');
+}
+yellow.onclick = function() {
+	context.strokeStyle = 'yellow';
+	yellow.classList.add('active');
+	red.classList.remove('active');
+	blue.classList.remove('active');
+	black.classList.remove('active');
+}
+blue.onclick = function() {
+	context.strokeStyle = 'blue';
+	blue.classList.add('active');
+	red.classList.remove('active');
+	yellow.classList.remove('active');
+	black.classList.remove('active');
+}
+
+var eraserEnabled = false;
+pen.onclick = function () {
 	eraserEnabled = false;
-	actions.className = "actions";
+	pen.classList.add('active');
+	eraser.classList.remove('active');
+}
+eraser.onclick = function() {
+	eraserEnabled = true;
+	eraser.classList.add('active');
+	pen.classList.remove('active');
 }
 /******/
 
 function drawLine(x1, y1, x2, y2) {
 	context.beginPath();
-	context.strokeStyle = 'black';
 	context.moveTo(x1, y1);
-	context.lineWidth = 5;
+	context.lineWidth = lineWidth;
 	context.lineTo(x2, y2);
 	context.stroke();
 	context.closePath();
