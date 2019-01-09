@@ -1,0 +1,16 @@
+.images {
+	display: flex;
+	transition: transform 0.5s
+
+}
+.images > img {     
+	width: 200px;
+	flex-shrink: 0;/*背下来 */
+}
+.window {
+	width: 200px;
+	overflow: hidden
+}
+#buttons > span.red {
+  color: red;
+} 
