@@ -29,10 +29,26 @@ function getImage(n) {
 
 init()
 
-setInterval(() => {
+let timer = setInterval(() => {
 	makeLeave(getImage(n)).one('transitionend', (e) => { //one和on的区别是监听动作出现时命令只执行一次，后续再次出现监听的动作时命令不会再次执行
 		makeEnter($(e.currentTarget))
 		})
 	makeCurrent(getImage(n + 1))
 	n += 1
 }, 2000)
+
+document.addEventListener('visibilitychange', function(e){
+	if(document.hidden) {
+		window.clearInterval(timer)
+	} else {
+		timer = setInterval(() => {
+		makeLeave(getImage(n)).one('transitionend', (e) => { //one和on的区别是监听动作出现时命令只执行一次，后续再次出现监听的动作时命令不会再次执行
+			makeEnter($(e.currentTarget))
+			})
+		makeCurrent(getImage(n + 1))
+		n += 1
+	}, 2000)
+	}
+})
+
+
